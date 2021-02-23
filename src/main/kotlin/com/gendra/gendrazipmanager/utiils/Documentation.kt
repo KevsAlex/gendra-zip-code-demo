@@ -1,5 +1,8 @@
 package com.gendra.gendrazipmanager.utiils
 
+/***
+ * This class is usefull for setting swagger labels
+ */
 class Documentation {
 
     companion object{

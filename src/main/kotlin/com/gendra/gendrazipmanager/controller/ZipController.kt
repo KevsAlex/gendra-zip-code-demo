@@ -18,14 +18,16 @@ class ZipController {
     lateinit var serviceZip: IZipService
 
     /**
-     * Given a zipcode , get de description
+     * Given a zipcode , gets the locallity description
      */
     @GetMapping("{zipCode}", "")
-    @ApiOperation(value = Documentation.zipController_locationByZipCode, notes = Documentation.zipController_locationByZipCode_note)
+    @ApiOperation(
+        value = Documentation.zipController_locationByZipCode,
+        notes = Documentation.zipController_locationByZipCode_note)
     fun locationByZipCode(@PathVariable(required = false) zipCode: String?): GenericResponse<Any> {
 
         if (zipCode.isNullOrEmpty()) {
-            throw NotFoundException("100", "zip code vacío", this::class::java.name)
+            throw NotFoundException("100", "empty zipCode", this::class::java.name)
         }
         return serviceZip.locationByZipCode(zipCode)
     }

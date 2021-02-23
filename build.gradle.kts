@@ -32,7 +32,7 @@ dependencies {
 
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-
+	implementation(group="org.mockito", name="mockito-core", version="3.5.10")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
 

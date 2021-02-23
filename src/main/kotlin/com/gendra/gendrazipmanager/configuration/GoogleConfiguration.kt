@@ -35,8 +35,8 @@ class GoogleConfiguration {
      */
     @Bean
     fun fireStoreConfig(): Firestore {
-        authExplicit("google_owner_account.json")
 
+        //val credentials = GoogleCredentials.getApplicationDefault()
         val credentials: GoogleCredentials = GoogleCredentials.fromStream(FileInputStream("google_owner_account.json"))
             .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"))
         val storage: Storage = StorageOptions.newBuilder().setCredentials(credentials).build().service
@@ -58,19 +58,7 @@ class GoogleConfiguration {
     }
 
 
-    @Throws(IOException::class)
-    fun authExplicit(jsonPath: String) {
-        // You can specify a credential file by providing a path to GoogleCredentials.
-        // Otherwise credentials are read from the GOOGLE_APPLICATION_CREDENTIALS environment variable.
-        val credentials: GoogleCredentials = GoogleCredentials.fromStream(FileInputStream(jsonPath))
-            .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"))
-        val storage: Storage = StorageOptions.newBuilder().setCredentials(credentials).build().service
-        println("Buckets:")
-        val buckets: Page<Bucket> = storage.list()
-        for (bucket in buckets.iterateAll()) {
-            System.out.println(bucket.toString())
-        }
-    }
+
 
 
 }

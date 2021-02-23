@@ -3,7 +3,7 @@
 ## CURL
 
 
-    curl --location --request GET 'https://gendra-zip-service-uqjpj7hczq-ue.a.run.app/zip-codes/22645'
+    curl --location --request GET 'https://gendra-zip-manager-b6qoltxv4a-uk.a.run.app/zip-codes/20000'
 
 ## Success
 

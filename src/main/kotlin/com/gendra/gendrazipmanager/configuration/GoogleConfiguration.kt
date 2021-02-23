@@ -36,9 +36,9 @@ class GoogleConfiguration {
     @Bean
     fun fireStoreConfig(): Firestore {
 
-        //val credentials = GoogleCredentials.getApplicationDefault()
-        val credentials: GoogleCredentials = GoogleCredentials.fromStream(FileInputStream("google_owner_account.json"))
-            .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"))
+        val credentials = GoogleCredentials.getApplicationDefault()
+        /*val credentials: GoogleCredentials = GoogleCredentials.fromStream(FileInputStream("google_owner_account.json"))
+            .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"))*/
         val storage: Storage = StorageOptions.newBuilder().setCredentials(credentials).build().service
         println("Buckets:")
         val buckets: Page<Bucket> = storage.list()

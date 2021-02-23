@@ -50,7 +50,7 @@ class ZipService : IZipService {
             zipInfoResponse.fedaralEntity = zipInfo.d_estado
             var localDetail = LocallityDetail()
             localDetail.name = zipInfo.d_asenta
-            localDetail.settlement_type = zipInfo.d_tipo_asenta
+            localDetail.settlementType = zipInfo.d_tipo_asenta
             localDetail.zoneType = zipInfo.d_zona
             zipInfoResponse.settlements.add(localDetail)
         }

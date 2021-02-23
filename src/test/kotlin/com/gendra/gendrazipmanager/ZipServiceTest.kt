@@ -1,4 +1,4 @@
-package com.gendra.gendrazipmanager.unit
+package com.gendra.gendrazipmanager
 
 import com.gendra.gendrazipmanager.model.GenericResponse
 import com.gendra.gendrazipmanager.model.ZipInfoResponse
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.http.MediaType
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.MvcResult
@@ -35,6 +34,21 @@ class ZipServiceTest {
     private val genericProductoResponse: GenericResponse<Any> = GenericResponse()
     private val zipInfoResponse = ZipInfoResponse()
     private fun <T> any(type: Class<T>): T = Mockito.any<T>(type)
+
+    /**
+     * Check if 404 is thrown
+     */
+    @Test
+    @Throws(Exception::class)
+    fun testAnExeptionisThrown() {
+        val requestBuilderFalse: RequestBuilder = MockMvcRequestBuilders.get("/zip-codes/aaaa/aaaa")
+        mockMvc.perform(requestBuilderFalse)
+            .andExpect(MockMvcResultMatchers.status().isNotFound)
+            .andDo(MockMvcResultHandlers.print())
+            .andReturn()
+
+
+    }
 
     /**
      * Check if the service response is correct
@@ -66,18 +80,5 @@ class ZipServiceTest {
             .andReturn()
     }
 
-    /**
-     * Check if 404 is thrown
-     */
-    @Test
-    @Throws(Exception::class)
-    fun testAnExeptionisThrown() {
-        val requestBuilderFalse: RequestBuilder = MockMvcRequestBuilders.get("/zip-codes/aaaa/aaaa")
-        mockMvc.perform(requestBuilderFalse)
-            .andExpect(MockMvcResultMatchers.status().isNotFound)
-            .andDo(MockMvcResultHandlers.print())
-            .andReturn()
 
-
-    }
 }

@@ -1,6 +1,6 @@
 # gendra-zip-code-demo
 
-## Sample responses
+## CURL
 
 
     curl --location --request GET 'https://gendra-zip-service-uqjpj7hczq-ue.a.run.app/zip-codes/22645'
